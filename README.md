@@ -1,162 +1,161 @@
-# Your Portfolio Site — Editing Guide
+# Website Portfolio
 
-A dark, premium portfolio site built for web designers/developers who build websites for businesses.
+This repository contains a static portfolio website built with plain HTML, CSS, and JavaScript. It is designed for easy editing and collaboration, making it simple for your team to update content, add projects, and launch the site.
 
----
-
-## File structure at a glance
+## Repository structure
 
 ```
-portfolio-site/
-│
-├── index.html              Homepage
-├── work.html               Portfolio / case studies
-├── about.html              About page
-├── testimonials.html       Client testimonials
-├── blog.html               Blog / articles
-├── contact.html            Contact form
-│
+website-portfolio/
+├── index.html
+├── work.html
+├── about.html
+├── testimonials.html
+├── blog.html
+├── contact.html
+├── README.md
+├── PRADYUMNA MOHARIR.jpeg
 ├── assets/
 │   ├── css/
-│   │   ├── tokens.css      ← COLOR & FONT SYSTEM (change the whole look here)
-│   │   ├── base.css        Reset + typography defaults
-│   │   ├── components.css  Nav, footer, cards, buttons, throughline rail
-│   │   ├── animations.css  Keyframes + scroll-reveal classes
-│   │   ├── home.css        Homepage-only styles
-│   │   └── pages.css       Inner page styles (work, about, etc.)
-│   │
+│   │   ├── animations.css
+│   │   ├── base.css
+│   │   ├── components.css
+│   │   ├── home.css
+│   │   ├── pages.css
+│   │   └── tokens.css
 │   ├── js/
-│   │   ├── config.js           ← START HERE — site name, company, contact, nav
-│   │   ├── data-projects.js    ← ADD PROJECTS HERE
-│   │   ├── data-testimonials.js← ADD TESTIMONIALS HERE
-│   │   ├── data-posts.js       ← ADD BLOG POSTS HERE
-│   │   ├── render-helpers.js   Card HTML factories (rarely edited)
-│   │   ├── layout.js           Builds nav + footer from config
-│   │   └── animations.js       Scroll-reveal + throughline + hero glow
-│   │
+│   │   ├── animations.js
+│   │   ├── config.js
+│   │   ├── data-posts.js
+│   │   ├── data-projects.js
+│   │   ├── data-testimonials.js
+│   │   ├── layout.js
+│   │   └── render-helpers.js
 │   └── images/
-│       ├── projects/           Drop project screenshots here
-│       └── blog/               Drop blog cover images here
+│       ├── projects/
+│       └── blog/
+└── __MACOSX/
 ```
 
----
+## What this repo does
 
-## The 4 files you'll edit most
+- `index.html` is the homepage.
+- `work.html` shows portfolio projects and filters.
+- `about.html` is the studio/about page.
+- `testimonials.html` shows client quotes.
+- `blog.html` shows blog posts.
+- `contact.html` includes a contact form and site contact details.
 
-### 1. `assets/js/config.js` — Site identity & contact info
-Change your site name, company name, tagline, email, phone, and social links here.
-Everything updates everywhere automatically.
+The site uses `assets/js/config.js` for shared configuration and `assets/js/data-*.js` for editable content.
 
-### 2. `assets/js/data-projects.js` — Add portfolio projects
-Each project is one object. Copy the commented example, fill in the fields, and
-remove the `/*` and `*/` around it.
+## How to collaborate
 
+1. Clone the repo:
+   ```powershell
+   git clone https://github.com/SanghpalBhakte/Website-Portfolio.git
+   cd "website portfolio (r)"
+   ```
+
+2. Open the folder in VS Code.
+3. Edit content in these files:
+   - `assets/js/config.js` for site title, email, phone, and nav links.
+   - `assets/js/data-projects.js` to add portfolio case studies.
+   - `assets/js/data-testimonials.js` to add client quotes.
+   - `assets/js/data-posts.js` to add blog posts.
+   - `about.html` for the About page story section.
+
+4. Commit and push changes:
+   ```powershell
+   git add .
+   git commit -m "Update portfolio content"
+   git push
+   ```
+
+## Running locally
+
+This site is static and works in any browser. To preview it locally, use a simple server.
+
+### Option 1: Python
+```powershell
+cd "c:\Users\Sanghapal\Downloads\website portfolio (r)"
+python -m http.server 8000
+```
+Then open: `http://localhost:8000`
+
+### Option 2: Live Server extension
+- Install the Live Server extension in VS Code.
+- Right-click `index.html` and choose `Open with Live Server`.
+
+## Editing content
+
+### Update the site identity
+Edit `assets/js/config.js`:
+- `siteName`
+- `companyName`
+- `tagline`
+- `contact.email`
+- `contact.phone`
+- `socials`
+- `nav`
+- `navCta`
+
+### Add portfolio projects
+Edit `assets/js/data-projects.js` and add objects like:
 ```js
 {
   title: "Client Name",
-  category: "E-commerce",         // used in filter buttons on the Work page
-  description: "One or two sentences about the project and what you achieved.",
-  image: "assets/images/projects/client-screenshot.jpg",  // or "" for placeholder
-  liveUrl: "https://clientwebsite.com",
+  category: "E-commerce",
+  description: "One or two sentences about the project.",
+  image: "assets/images/projects/example.jpg",
+  liveUrl: "https://example.com",
   tags: ["Shopify", "Custom Theme"],
-  featured: true,   // true = also shows on the homepage
+  featured: true,
 },
 ```
 
-### 3. `assets/js/data-testimonials.js` — Add client quotes
-
+### Add testimonials
+Edit `assets/js/data-testimonials.js` and add objects like:
 ```js
 {
-  quote: "The full testimonial text here.",
+  quote: "The team delivered a beautiful website quickly.",
   name: "Client Name",
-  role: "Job Title",
-  company: "Their Company",
+  role: "Founder",
+  company: "Company Name",
 },
 ```
 
-### 4. `assets/js/data-posts.js` — Add blog posts
-
+### Add blog posts
+Edit `assets/js/data-posts.js` and add objects like:
 ```js
 {
   title: "Article headline",
-  excerpt: "One or two sentence summary shown on the card.",
+  excerpt: "Short summary.",
   date: "July 2026",
   category: "Process",
-  image: "assets/images/blog/cover.jpg",   // or "" for placeholder
-  url: "https://medium.com/your-article",  // where the full post lives
+  image: "assets/images/blog/cover.jpg",
+  url: "https://example.com/blog/article",
 },
 ```
 
----
+## Making the contact form functional
 
-## Changing colors
+The form currently shows a success message in the browser when submitted. To send real emails:
 
-Open `assets/css/tokens.css`. The variables at the top control everything:
-
-| Variable | Default | What it affects |
-|---|---|---|
-| `--color-bg` | `#0a0908` | Page background |
-| `--color-gold` | `#bfa055` | Primary accent (buttons, eyebrows, borders) |
-| `--color-gold-bright` | `#e8c766` | Hover / highlight states |
-| `--color-ivory` | `#f5f1e8` | Headings and primary text |
-| `--color-muted` | `#aca48f` | Body copy |
-
----
-
-## Changing fonts
-
-In `tokens.css`, edit `--font-display` (headings) and `--font-body` (body text).
-Then update the Google Fonts link in each HTML file's `<head>`.
-
----
-
-## Wiring up the contact form
-
-Open `contact.html`. Find this line:
-
-```html
-<form id="contact-form" method="POST" action="">
-```
-
-Replace the empty `action=""` with your Formspree URL:
-
-```html
-<form id="contact-form" method="POST" action="https://formspree.io/f/YOUR_ID">
-```
-
-Sign up free at https://formspree.io — they handle the email delivery.
-
----
-
-## Adding your photo (About page)
-
-1. Add your photo to `assets/images/portrait.jpg`
-2. Open `about.html`
-3. Find the `about-portrait-placeholder` div and replace it with:
+1. Sign up at https://formspree.io
+2. Create a form and copy your form URL.
+3. Edit `contact.html` and set the form action:
    ```html
-   <img src="assets/images/portrait.jpg" alt="Your Name" />
+   <form id="contact-form" method="POST" action="https://formspree.io/f/YOUR_ID">
    ```
 
----
+## Notes for collaborators
 
-## Hosting
+- Do not delete `assets/js/render-helpers.js` or `assets/js/layout.js`; they build the site automatically.
+- Keep `assets/css/tokens.css` as the theme source of truth.
+- If you change the `companyName` to empty in `config.js`, it will hide the small logo subtitle.
 
-This is a plain HTML/CSS/JS site — no build tools required.
-Upload the entire `portfolio-site/` folder to:
-- **Netlify** (drag and drop the folder at netlify.com/drop) ← easiest
-- **Vercel** (connect a GitHub repo)
-- **GitHub Pages**
-- Any web host that serves static files
+## GitHub repo
 
----
+The project is already available at:
+https://github.com/SanghpalBhakte/Website-Portfolio
 
-## The throughline
-
-The gold vertical guide-rail on the left side of the screen (desktop) fills as
-you scroll and lights up nodes as each section comes into view. On mobile it
-becomes a thin gold progress bar at the top of the screen.
-
-It's driven by `data-throughline` attributes on `<section>` elements. Every
-section with `data-throughline="anything"` gets a node automatically. You don't
-need to touch `animations.js` to add or remove nodes — just add or remove the
-attribute from your sections.
+Share this URL with collaborators so they can clone, update, and push changes.
