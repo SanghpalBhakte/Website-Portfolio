@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+  <div id="scroll-progress-mount"></div>
+  <header class="site-header" id="site-header"></header>
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <section class="page-hero" data-throughline="hero">
+      <div class="container">
+        <span class="eyebrow reveal">Blog</span>
+        <h1 class="reveal" style="--delay:80ms">Thinking out loud</h1>
+        <p class="reveal" style="--delay:160ms">
+          Practical writing about web design, business growth, and what we've
+          learned from building websites for a wide range of clients.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" data-throughline="posts">
+      <div class="container">
+        <div class="blog-grid" id="blog-grid">
+          <!-- Static fallback shown when there are no posts (visible without JS) -->
+          <div class="empty-state reveal" style="--delay:80ms">
+            <p class="form-note">coming soon ;)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data-posts.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    (function () {
+      const grid = document.getElementById("blog-grid");
+      /* Sort newest first: relies on the order in data-posts.js by default */
+      if (POSTS.length) {
+        grid.innerHTML = POSTS.map((p, i) => postCardHTML(p, i)).join("");
+      } else {
+        grid.innerHTML = '<div class="empty-state reveal" style="--delay:80ms"><p class="form-note">coming soon ;)</p></div>';
+      }
+    })();
+  </script>
+</body>
+</html>

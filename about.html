@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+
+  <style>
+    /* ── About page extras ── */
+    .about-section { padding-block: var(--space-3xl); }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    .stat-item { border-top: 1px solid var(--color-border-strong); padding-top: var(--space-md); }
+    .stat-item .number {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      color: var(--color-gold-bright);
+      line-height: 1;
+    }
+    .stat-item p { margin-top: var(--space-2xs); font-size: var(--text-sm); }
+    @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="scroll-progress-mount"></div>
+  <header class="site-header" id="site-header"></header>
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <section class="page-hero" data-throughline="hero">
+      <div class="container">
+        <span class="eyebrow reveal">About</span>
+        <h1 class="reveal" style="--delay:80ms">The studio behind the work</h1>
+        <p class="reveal" style="--delay:160ms">
+          We're a small, focused web studio. No account managers, no bloat —
+          just experienced people who care about craft and results.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── ABOUT BODY ── -->
+    <section class="about-section" data-throughline="about">
+      <div class="container">
+        <div class="about-layout">
+
+          <!-- Portrait / photo -->
+          <div class="about-portrait reveal">
+            <img src="PRADYUMNA MOHARIR.jpeg" alt="Pradyumna Moharir" />
+          </div>
+
+          <!-- Body copy -->
+          <div class="about-body">
+            <!--
+              ════════════════════════════════════════════
+              EDIT THIS SECTION — replace the placeholder
+              paragraphs with your own story.
+              ════════════════════════════════════════════
+            -->
+            <span class="eyebrow reveal">Our story</span>
+            <p class="about-intro reveal" style="--delay:80ms">
+              We started this studio because we want to make something that helps businesses grow.
+            </p>
+
+            <!-- Stats -->
+            <div class="stat-row">
+              <!--
+                Edit the numbers and labels below.
+                Delete rows you don't need, or duplicate rows to add more.
+              -->
+              <div class="stat-item reveal" style="--delay:0ms">
+                <div class="number">0+</div>
+                <p>Projects delivered</p>
+              </div>
+              <div class="stat-item reveal" style="--delay:80ms">
+                <div class="number">0+</div>
+                <p>Happy clients</p>
+              </div>
+              <div class="stat-item reveal" style="--delay:160ms">
+                <div class="number">0</div>
+                <p>Years in business</p>
+              </div>
+            </div>
+
+            <!-- Values -->
+            <h2 class="reveal" style="--delay:0ms;margin-top:var(--space-2xl)">What we stand for</h2>
+            <div class="values-list">
+              <!--
+                Edit or add values. Each .value-item is one principle.
+                The gold left-border treatment is applied automatically.
+              -->
+              <div class="value-item reveal" style="--delay:0ms">
+                <h4>Craft over volume</h4>
+                <p>We'd rather do fewer projects and do them exceptionally than churn
+                   out average work at scale.</p>
+              </div>
+              <div class="value-item reveal" style="--delay:80ms">
+                <h4>Honesty, always</h4>
+                <p>If a feature won't help your business, we'll say so. You're paying
+                   for results, not billable hours.</p>
+              </div>
+              <div class="value-item reveal" style="--delay:160ms">
+                <h4>Speed with intention</h4>
+                <p>Fast websites. Fast communication. Fast launches. Never at the cost
+                   of quality.</p>
+              </div>
+              <div class="value-item reveal" style="--delay:240ms">
+                <h4>Transparency</h4>
+                <p>We will be transparent about everything — expenses, our work process, timelines, and decisions.</p>
+              </div>
+            </div>
+
+            <!-- Skills -->
+            <h2 class="reveal" style="margin-top:var(--space-2xl)">What we work with</h2>
+            <div class="skills-grid">
+              <div class="skill-pill reveal" style="--delay:0ms">HTML</div>
+              <div class="skill-pill reveal" style="--delay:60ms">CSS</div>
+              <div class="skill-pill reveal" style="--delay:120ms">JS</div>
+              <div class="skill-pill reveal" style="--delay:180ms">Claude</div>
+              <div class="skill-pill reveal" style="--delay:240ms">Wix</div>
+            </div>
+
+            <div class="about-cta reveal">
+              <a href="work.html" class="btn btn-primary">See our work</a>
+              <a href="contact.html" class="btn btn-ghost">Get in touch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+</body>
+</html>

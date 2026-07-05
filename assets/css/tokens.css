@@ -1,0 +1,69 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   This file is the single source of truth for the visual language of the
+   site: colors, type, spacing, motion timing. Change a value here and it
+   updates everywhere the site uses it. You should rarely need to edit
+   anything outside this file to re-skin the site.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: warm black + brass gold ---- */
+  --color-bg: #0a0908;            /* page background */
+  --color-bg-elevated: #121009;   /* slightly raised regions (nav, footer) */
+  --color-surface: #1a1611;       /* cards, panels */
+  --color-surface-hover: #211c15;
+
+  --color-gold: #bfa055;          /* primary accent */
+  --color-gold-bright: #e8c766;   /* hover / emphasis */
+  --color-gold-dim: rgba(191, 160, 85, 0.35);
+
+  --color-ivory: #f5f1e8;         /* primary text */
+  --color-muted: #aca48f;         /* secondary text */
+  --color-faint: #6e6757;         /* tertiary text, placeholders */
+
+  --color-border: rgba(191, 160, 85, 0.14);
+  --color-border-strong: rgba(191, 160, 85, 0.32);
+
+  --color-success: #8fae7a;
+  --color-error: #c4715a;
+
+  /* ---- Type families ---- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "Manrope", -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* ---- Fluid type scale ---- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-xl: clamp(1.375rem, 1.1rem + 1vw, 1.875rem);
+  --text-2xl: clamp(1.75rem, 1.3rem + 1.8vw, 2.5rem);
+  --text-3xl: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
+  --text-4xl: clamp(2.75rem, 1.6rem + 4.5vw, 5rem);
+
+  /* ---- Spacing scale ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 9rem;
+
+  /* ---- Layout ---- */
+  --content-width: 1180px;
+  --content-padding: clamp(1.25rem, 4vw, 3rem);
+  --radius-sm: 3px;
+  --radius-md: 6px;
+  --radius-lg: 14px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 180ms;
+  --duration-base: 420ms;
+  --duration-slow: 800ms;
+}

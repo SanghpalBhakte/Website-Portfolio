@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home</title>
+
+  <!-- Google Fonts: Fraunces (display serif) + Manrope (body sans) + JetBrains Mono (labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/home.css" />
+</head>
+<body>
+  <!-- Scroll progress bar (mobile) -->
+  <div id="scroll-progress-mount"></div>
+
+  <!-- Navigation -->
+  <header class="site-header" id="site-header"></header>
+
+  <!-- Throughline navigation rail -->
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero hero-glow" data-throughline="hero">
+      <div class="container">
+        <div class="hero-text">
+          <p class="eyebrow hero-eyebrow reveal">Web Design &amp; Development</p>
+          <h1 class="reveal" style="--delay:80ms">
+            Websites that <em>earn</em> their keep
+          </h1>
+          <p class="hero-sub reveal" style="--delay:160ms">
+            We design and build fast, beautiful websites for businesses that take their
+            growth seriously. Every pixel earns its place.
+          </p>
+          <div class="hero-actions reveal" style="--delay:240ms">
+            <a href="work.html" class="btn btn-primary">See the work</a>
+            <a href="contact.html" class="btn btn-ghost">Start a project</a>
+          </div>
+          <div class="hero-badges reveal" style="--delay:360ms">
+            <span class="hero-badge">Strategy-first approach</span>
+            <span class="hero-badge">Mobile-first builds</span>
+            <span class="hero-badge">Fast turnaround</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════ TRUST STRIP ═══════════ -->
+    <div class="trust-strip reveal">
+      <div class="container">
+        <span class="trust-item">Trusted by small &amp; medium businesses</span>
+        <span class="trust-item">From concept to launch</span>
+        <span class="trust-item">Handcrafted, not templated</span>
+        <span class="trust-item">Ongoing support available</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ FEATURED WORK ═══════════ -->
+    <section class="section" data-throughline="work">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Selected Work</span>
+          <h2 class="reveal" style="--delay:80ms">Projects that moved the needle</h2>
+          <p class="reveal" style="--delay:160ms">
+            A curated look at websites built for real businesses with real goals.
+          </p>
+        </div>
+
+        <div class="work-grid" id="home-projects-grid">
+          <!-- Populated by home.js from data-projects.js -->
+        </div>
+
+        <div class="reveal" style="--delay:200ms;margin-top:var(--space-xl);text-align:center;">
+          <a href="work.html" class="btn btn-ghost">View all projects</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ PROCESS ═══════════ -->
+    <section class="section" data-throughline="process">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">How it works</span>
+          <h2 class="reveal" style="--delay:80ms">A process built around your outcome</h2>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-step reveal" style="--delay:0ms">
+            <span class="eyebrow">01 &mdash; Discovery</span>
+            <h3>We listen before we sketch</h3>
+            <p>A structured kick-off to understand your business, your customers,
+               and what success actually means for this site.</p>
+          </div>
+          <div class="process-step reveal" style="--delay:100ms">
+            <span class="eyebrow">02 &mdash; Design</span>
+            <h3>One direction, done right</h3>
+            <p>No endless rounds of random options. We present one considered design,
+               built on strategy — then we refine it together.</p>
+          </div>
+          <div class="process-step reveal" style="--delay:200ms">
+            <span class="eyebrow">03 &mdash; Build &amp; Launch</span>
+            <h3>Fast, clean, live</h3>
+            <p>We code it by hand for speed and flexibility, test it on every device,
+               and hand it over ready to grow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ TESTIMONIALS PREVIEW ═══════════ -->
+    <section class="section" data-throughline="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow reveal">Client Words</span>
+          <h2 class="reveal" style="--delay:80ms">Straight from the people who matter</h2>
+        </div>
+
+        <div class="testimonial-grid" id="home-testimonials-grid">
+          <!-- Populated by home.js -->
+        </div>
+
+        <div class="reveal" style="margin-top:var(--space-xl);text-align:center;">
+          <a href="testimonials.html" class="btn btn-ghost">Read all testimonials</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CTA BANNER ═══════════ -->
+    <section class="section cta-banner" data-throughline="cta">
+      <div class="container">
+        <span class="eyebrow reveal">Ready when you are</span>
+        <h2 class="reveal" style="--delay:80ms">
+          Let's build something your customers will remember
+        </h2>
+        <div class="cta-banner-actions reveal" style="--delay:160ms">
+          <a href="contact.html" class="btn btn-primary">Start a project</a>
+          <a href="about.html" class="btn btn-ghost">Learn about us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <!-- Scripts: config first, then data, then layout, then page -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data-projects.js"></script>
+  <script src="assets/js/data-testimonials.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    /* ---- Home page: populate grids from data files ---- */
+    (function () {
+      const projectGrid = document.getElementById("home-projects-grid");
+      const featuredProjects = PROJECTS.filter((p) => p.featured).slice(0, 3);
+
+      if (featuredProjects.length) {
+        projectGrid.innerHTML = featuredProjects.map((p, i) => projectCardHTML(p, i)).join("");
+      } else {
+        projectGrid.innerHTML = emptyStateHTML({
+          title: "working on it ;)",
+          message: "",
+          hint: "",
+        });
+      }
+
+      const testimonialGrid = document.getElementById("home-testimonials-grid");
+      const firstTwo = TESTIMONIALS.slice(0, 2);
+
+      if (firstTwo.length) {
+        testimonialGrid.innerHTML = firstTwo.map((t, i) => testimonialCardHTML(t, i)).join("");
+      } else {
+        testimonialGrid.innerHTML = emptyStateHTML({
+          title: "No testimonials yet",
+          message: "working on it ;)",
+          hint: "",
+        });
+      }
+
+      /* Kick off reveal observers after dynamic content is injected */
+      document.querySelectorAll(".reveal, .reveal-line").forEach((el) => {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); } });
+          },
+          { threshold: 0.1 }
+        );
+        io.observe(el);
+      });
+    })();
+  </script>
+</body>
+</html>

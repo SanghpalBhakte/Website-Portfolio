@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+  <div id="scroll-progress-mount"></div>
+  <header class="site-header" id="site-header"></header>
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <section class="page-hero" data-throughline="hero">
+      <div class="container">
+        <span class="eyebrow reveal">Contact</span>
+        <h1 class="reveal" style="--delay:80ms">Let's start a conversation</h1>
+        <p class="reveal" style="--delay:160ms">
+          Tell us about your project. We read every message and respond within
+          one business day.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" data-throughline="contact">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Left: contact details pulled from config.js -->
+          <div class="contact-info reveal">
+            <h2>Get in touch</h2>
+            <p>Whether you have a fully-formed brief or just an idea — we're
+               happy to talk.</p>
+
+            <div class="contact-detail-list" id="contact-details">
+              <!-- Injected by inline script from SITE_CONFIG -->
+            </div>
+          </div>
+
+          <!-- Right: contact form -->
+          <div class="contact-form-card reveal" style="--delay:120ms">
+            <h3>Send a message</h3>
+
+            <!-- Success state -->
+            <div class="form-success" id="form-success">
+              <div class="form-success__icon">&#10003;</div>
+              <h3>Message received</h3>
+              <p>We'll be in touch within one business day.</p>
+            </div>
+
+            <!-- Form -->
+            <div id="contact-form-wrap">
+              <!--
+                HOW TO WIRE UP THIS FORM:
+                ─────────────────────────
+                Option A (recommended — free):
+                  Sign up at https://formspree.io, create a form,
+                  and set the action attribute below to your Formspree URL:
+                  e.g. action="https://formspree.io/f/YOUR_ID"
+
+                Option B:
+                  Use any form backend (Netlify Forms, EmailJS, etc.)
+                  and adapt the submit handler below accordingly.
+
+                For now, the form shows a success message on submit
+                so the UI works correctly during development.
+              -->
+              <form
+                id="contact-form"
+                method="POST"
+                action=""
+              >
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="f-name">First name</label>
+                    <input type="text" id="f-name" name="first_name" placeholder="Jane" required />
+                  </div>
+                  <div class="form-field">
+                    <label for="f-surname">Last name</label>
+                    <input type="text" id="f-surname" name="last_name" placeholder="Smith" required />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="f-email">Email address</label>
+                  <input type="email" id="f-email" name="email" placeholder="jane@company.com" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="f-company">Company / website (optional)</label>
+                  <input type="text" id="f-company" name="company" placeholder="Acme Inc." />
+                </div>
+
+                <div class="form-field">
+                  <label for="f-budget">Approximate budget</label>
+                  <input type="text" id="f-budget" name="budget" placeholder="e.g. $3,000 – $5,000" />
+                </div>
+
+                <div class="form-field">
+                  <label for="f-message">Tell us about your project</label>
+                  <textarea id="f-message" name="message" placeholder="What are you trying to achieve? What does your current site look like (if you have one)? Any specific features in mind?" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+                  Send message
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+
+                <p class="form-note">
+                  By submitting this form you agree we may use your details to
+                  respond to your enquiry. We won't send you anything unsolicited.
+                </p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    (function () {
+      /* ── Inject contact details from config.js ── */
+      const detailsMount = document.getElementById("contact-details");
+      const cfg = SITE_CONFIG.contact;
+      const items = [];
+
+      if (cfg.email) {
+        items.push({ label: "Email", value: `<a href="mailto:${cfg.email}">${cfg.email}</a>` });
+      }
+      if (cfg.phone) {
+        items.push({ label: "Phone", value: `<a href="tel:${cfg.phone.replace(/\D/g,"")}">${cfg.phone}</a>` });
+      }
+      if (cfg.location) {
+        items.push({ label: "Location", value: cfg.location });
+      }
+      if (cfg.calendlyUrl) {
+        items.push({ label: "Book a call", value: `<a href="${cfg.calendlyUrl}" target="_blank" rel="noopener">Schedule 30 min →</a>` });
+      }
+
+      const socialsFiltered = SITE_CONFIG.socials.filter((s) => s.url);
+      if (socialsFiltered.length) {
+        items.push({
+          label: "Follow",
+          value: socialsFiltered.map((s) =>
+            `<a href="${s.url}" target="_blank" rel="noopener" style="display:inline-block;margin-right:.75rem;">${s.label}</a>`
+          ).join("")
+        });
+      }
+
+      detailsMount.innerHTML = items.map((item) => `
+        <div class="contact-detail">
+          <span class="contact-detail__label">${item.label}</span>
+          <div class="contact-detail__value">${item.value}</div>
+        </div>
+      `).join("");
+
+      /* ── Form handling ── */
+      const form = document.getElementById("contact-form");
+      const successEl = document.getElementById("form-success");
+      const formWrap = document.getElementById("contact-form-wrap");
+
+      form.addEventListener("submit", async (e) => {
+        const action = form.getAttribute("action");
+
+        if (!action) {
+          /* Development / no backend: just show success */
+          e.preventDefault();
+          formWrap.style.display = "none";
+          successEl.classList.add("is-shown");
+          return;
+        }
+
+        /* If Formspree or similar is wired up, let it handle the POST */
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(action, {
+            method: "POST",
+            body: data,
+            headers: { Accept: "application/json" },
+          });
+          if (res.ok) {
+            formWrap.style.display = "none";
+            successEl.classList.add("is-shown");
+          } else {
+            alert("Something went wrong. Please email us directly at " + (cfg.email || "the address above") + ".");
+          }
+        } catch {
+          alert("Network error. Please email us directly.");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

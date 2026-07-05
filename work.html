@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Work</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+  <div id="scroll-progress-mount"></div>
+  <header class="site-header" id="site-header"></header>
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <section class="page-hero" data-throughline="hero">
+      <div class="container">
+        <span class="eyebrow reveal">Portfolio</span>
+        <h1 class="reveal" style="--delay:80ms">The work</h1>
+        <p class="reveal" style="--delay:160ms">
+          Every project below started with a problem a business needed solved.
+          Click through to see the live site.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" data-throughline="projects">
+      <div class="container">
+
+        <!-- Filter bar — categories are built dynamically from the tags in your data -->
+        <div class="filter-bar" id="filter-bar">
+          <button class="filter-btn is-active" data-filter="all">All</button>
+          <!-- Additional filter buttons injected by work.js -->
+        </div>
+
+        <div class="all-projects-grid" id="all-projects-grid">
+          <!-- Populated by inline script below -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-banner" data-throughline="cta">
+      <div class="container">
+        <span class="eyebrow reveal">Next up: yours</span>
+        <h2 class="reveal" style="--delay:80ms">Got a project in mind?</h2>
+        <div class="cta-banner-actions reveal" style="--delay:160ms">
+          <a href="contact.html" class="btn btn-primary">Let's talk</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data-projects.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    (function () {
+      const grid = document.getElementById("all-projects-grid");
+      const filterBar = document.getElementById("filter-bar");
+
+      function renderProjects(filter) {
+        const list = filter === "all"
+          ? PROJECTS
+          : PROJECTS.filter((p) => p.category === filter);
+
+        if (!list.length && !PROJECTS.length) {
+          grid.innerHTML = emptyStateHTML({
+            title: "Your portfolio goes here",
+            message: "Open assets/js/data-projects.js, uncomment the example entry, and fill in your project details.",
+            hint: "data-projects.js",
+          });
+          return;
+        }
+
+        if (!list.length) {
+          grid.innerHTML = emptyStateHTML({
+            title: "No projects in this category yet",
+            message: "Add more projects to data-projects.js with different categories.",
+          });
+          return;
+        }
+
+        grid.innerHTML = list.map((p, i) => projectCardHTML(p, i)).join("");
+
+        /* Re-trigger reveal for freshly injected cards */
+        grid.querySelectorAll(".reveal").forEach((el) => {
+          el.classList.remove("is-visible");
+          setTimeout(() => el.classList.add("is-visible"), 40);
+        });
+      }
+
+      /* Build filter buttons from unique categories */
+      const categories = [...new Set(PROJECTS.map((p) => p.category).filter(Boolean))];
+      categories.forEach((cat) => {
+        const btn = document.createElement("button");
+        btn.className = "filter-btn";
+        btn.dataset.filter = cat;
+        btn.textContent = cat;
+        filterBar.appendChild(btn);
+      });
+
+      filterBar.addEventListener("click", (e) => {
+        const btn = e.target.closest(".filter-btn");
+        if (!btn) return;
+        filterBar.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        renderProjects(btn.dataset.filter);
+      });
+
+      renderProjects("all");
+    })();
+  </script>
+</body>
+</html>

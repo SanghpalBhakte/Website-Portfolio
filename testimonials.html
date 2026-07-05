@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <link rel="stylesheet" href="assets/css/pages.css" />
+</head>
+<body>
+  <div id="scroll-progress-mount"></div>
+  <header class="site-header" id="site-header"></header>
+  <div id="throughline-mount"></div>
+
+  <main>
+
+    <section class="page-hero" data-throughline="hero">
+      <div class="container">
+        <span class="eyebrow reveal">Testimonials</span>
+        <h1 class="reveal" style="--delay:80ms">What clients say</h1>
+        <p class="reveal" style="--delay:160ms">
+          The measure of our work isn't what we think of it — it's what happens
+          to our clients' businesses after launch.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" data-throughline="testimonials">
+      <div class="container">
+        <div class="all-testimonials-grid" id="testimonials-grid">
+          <!-- Populated by inline script -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta-banner" data-throughline="cta">
+      <div class="container">
+        <span class="eyebrow reveal">Your turn</span>
+        <h2 class="reveal" style="--delay:80ms">
+          Ready to be the next success story?
+        </h2>
+        <div class="cta-banner-actions reveal" style="--delay:160ms">
+          <a href="contact.html" class="btn btn-primary">Start a project</a>
+          <a href="work.html" class="btn btn-ghost">See the work first</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/data-testimonials.js"></script>
+  <script src="assets/js/render-helpers.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/animations.js"></script>
+  <script>
+    (function () {
+      const grid = document.getElementById("testimonials-grid");
+      if (TESTIMONIALS.length) {
+        /* Add star ratings above each testimonial card */
+        grid.innerHTML = TESTIMONIALS.map((t, i) => {
+          const stars = `<div class="star-row">${"<span>★</span>".repeat(5)}</div>`;
+          const card = testimonialCardHTML(t, i);
+          /* Inject stars inside the card after the opening tag */
+          return card.replace('<span class="testimonial-card__mark">', stars + '<span class="testimonial-card__mark">');
+        }).join("");
+      } else {
+        grid.innerHTML = emptyStateHTML({
+          title: "No testimonials yet",
+          message: "Open assets/js/data-testimonials.js, uncomment the example, and add your first client quote.",
+          hint: "data-testimonials.js",
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
